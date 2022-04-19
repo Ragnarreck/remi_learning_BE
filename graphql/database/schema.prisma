@@ -12,22 +12,12 @@ datasource db {
 }
 
 generator nexusPrisma {
-   provider = "nexus-prisma"
-}
-
-model User {
-  id    String  @id @default(uuid())
-  email String  @unique
-  name  String?
-  tasks Task[]
+  provider = "nexus-prisma"
 }
 
 model Task {
-  id        String   @id @default(uuid())
-  title     String
-  content   String?
-  finished  Boolean  @default(false)
-  author    User?    @relation(fields: [authorId], references: [id])
-  authorId  String?
-  createdAt DateTime @default(now()) @map("created_at")
+  id       String  @id @default(uuid())
+  title    String
+  content  String
+  finished Boolean @default(false)
 }

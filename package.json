@@ -10,8 +10,12 @@
     "generate": "prisma generate && yarn generate:nexus && yarn generate:documents",
     "generate:documents": "graphql-codegen --config graphql.config.js",
     "generate:env": "npx ts-node --skip-project --transpile-only src/library/generate.env.ts",
-    "generate:nexus": "npx ts-node --skip-project --transpile-only -r tsconfig-paths/register src/graphql/schema --nexus-exit"
+    "generate:nexus": "npx ts-node --skip-project --transpile-only -r tsconfig-paths/register ./graphql/schema/index.ts --nexus-exit"
   },
+  "prisma": {
+    "schema": "./graphql/database/schema.prisma"
+  },
+  
   "dependencies": {
     "@clerk/clerk-sdk-node": "^3.3.5",
     "@clerk/nextjs": "^3.3.5",

@@ -1,0 +1,5 @@
+mutation updateById($id: String!, $finished: Boolean!) {
+  updateById(id: $id, finished: $finished) {
+    ...Task
+  }
+}
