@@ -1,0 +1,5 @@
+mutation deleteById($id: String!) {
+  deleteById(id: $id) {
+    ...Task
+  }
+}

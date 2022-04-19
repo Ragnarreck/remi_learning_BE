@@ -9,6 +9,7 @@ input BoolFieldUpdateOperationsInput {
 type Mutation {
   bigRedButton: String
   createOneTask(data: TaskCreateInput!): Task!
+  deleteById(id: String!): Task
   deleteOneTask(where: TaskWhereUniqueInput!): Task
   updateById(finished: Boolean!, id: String!): Task
   updateOneTask(data: TaskUpdateInput!, where: TaskWhereUniqueInput!): Task

@@ -20,6 +20,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   bigRedButton?: Maybe<Scalars['String']>;
   createOneTask: Task;
+  deleteById?: Maybe<Task>;
   deleteOneTask?: Maybe<Task>;
   updateById?: Maybe<Task>;
   updateOneTask?: Maybe<Task>;
@@ -28,6 +29,11 @@ export type Mutation = {
 
 export type MutationCreateOneTaskArgs = {
   data: TaskCreateInput;
+};
+
+
+export type MutationDeleteByIdArgs = {
+  id: Scalars['String'];
 };
 
 

@@ -26,9 +26,6 @@ export const getTasks = extendType({
       type: "Task",
       async resolve(one, two, { prisma }) {
         const tasks = await prisma.task.findMany();
-
-        if (!tasks) return null;
-
         return tasks;
       },
     });
@@ -83,5 +80,19 @@ export const updateById = mutationField("updateById", {
     });
 
     return updatedTask;
+  },
+});
+
+export const deleteById = mutationField("deleteById", {
+  type: "Task",
+  args: {
+    id: nonNull(stringArg()),
+  },
+  async resolve(_root, { id }, { prisma }) {
+    const deletedTask = await prisma.task.delete({
+      where: { id },
+    });
+
+    return deletedTask;
   },
 });
