@@ -60,8 +60,6 @@ export const Mutation = mutationType({
         return `${count} user(s) destroyed. Thanos will be proud.`;
       },
     });
-
-    t.crud.createOneTask();
     t.crud.deleteOneTask();
     t.crud.updateOneTask();
   },
@@ -80,6 +78,24 @@ export const updateById = mutationField("updateById", {
     });
 
     return updatedTask;
+  },
+});
+
+export const createTask = mutationField("createTask", {
+  type: "Task",
+  args: {
+    title: nonNull(stringArg()),
+    content: nonNull(stringArg()),
+  },
+  async resolve(_root, { title, content }, { prisma }) {
+    const createdTask = await prisma.task.create({
+      data: {
+        title,
+        content,
+      },
+    });
+
+    return createdTask;
   },
 });
 

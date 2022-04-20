@@ -19,7 +19,7 @@ export type BoolFieldUpdateOperationsInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   bigRedButton?: Maybe<Scalars['String']>;
-  createOneTask: Task;
+  createTask?: Maybe<Task>;
   deleteById?: Maybe<Task>;
   deleteOneTask?: Maybe<Task>;
   updateById?: Maybe<Task>;
@@ -27,8 +27,9 @@ export type Mutation = {
 };
 
 
-export type MutationCreateOneTaskArgs = {
-  data: TaskCreateInput;
+export type MutationCreateTaskArgs = {
+  content: Scalars['String'];
+  title: Scalars['String'];
 };
 
 
@@ -74,13 +75,6 @@ export type Task = {
   finished?: Maybe<Scalars['Boolean']>;
   id?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
-};
-
-export type TaskCreateInput = {
-  content: Scalars['String'];
-  finished?: InputMaybe<Scalars['Boolean']>;
-  id?: InputMaybe<Scalars['String']>;
-  title: Scalars['String'];
 };
 
 export type TaskUpdateInput = {

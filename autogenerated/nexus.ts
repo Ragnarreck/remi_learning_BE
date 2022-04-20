@@ -25,12 +25,6 @@ export interface NexusGenInputs {
   StringFieldUpdateOperationsInput: { // input type
     set?: string | null; // String
   }
-  TaskCreateInput: { // input type
-    content: string; // String!
-    finished?: boolean | null; // Boolean
-    id?: string | null; // String
-    title: string; // String!
-  }
   TaskUpdateInput: { // input type
     content?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     finished?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
@@ -72,7 +66,7 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 export interface NexusGenFieldTypes {
   Mutation: { // field return type
     bigRedButton: string | null; // String
-    createOneTask: NexusGenRootTypes['Task']; // Task!
+    createTask: NexusGenRootTypes['Task'] | null; // Task
     deleteById: NexusGenRootTypes['Task'] | null; // Task
     deleteOneTask: NexusGenRootTypes['Task'] | null; // Task
     updateById: NexusGenRootTypes['Task'] | null; // Task
@@ -93,7 +87,7 @@ export interface NexusGenFieldTypes {
 export interface NexusGenFieldTypeNames {
   Mutation: { // field return type name
     bigRedButton: 'String'
-    createOneTask: 'Task'
+    createTask: 'Task'
     deleteById: 'Task'
     deleteOneTask: 'Task'
     updateById: 'Task'
@@ -113,8 +107,9 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Mutation: {
-    createOneTask: { // args
-      data: NexusGenInputs['TaskCreateInput']; // TaskCreateInput!
+    createTask: { // args
+      content: string; // String!
+      title: string; // String!
     }
     deleteById: { // args
       id: string; // String!
